@@ -1,0 +1,425 @@
+###########################################################################################
+#	CONSTANTS.py
+# Constants defined
+#
+#	Mahesh Devendran, WebSphere Support, PIU Team
+#	Copyright(c) 2010, Euroclear 
+############################################################################################
+
+from templates import mq
+execfile("properties" + File.separator + "piuh2h.properties")
+
+KYENVID	=	"ENVID"
+KYCCI_VERSION	=	"CCI_VERSION"
+KYPROJECT	=	"PROJECT"
+KYSUBPROJECT	=	"SUBPROJECT"
+KYBUILDLOC	=	"BUILDLOC"
+KYBUILDS	=	"BUILDS"
+KYSODIRS	=	"SODIRS"
+KYMAPSDIRS	=	"MAPSDIRS"
+KYCONFIGDIRS	=	"CONFIGDIRS"
+KYJVALFOLDER="JVALFOLDER"
+KYMQCHECKLIST = "MQCHECKLIST"
+KYIGNOREFOLDERS="IGNOREFOLDERS"
+KYPARAM_QUEUE_MANAGER = "PARAM_QUEUE_MANAGER"
+KYMQSCRIPT = "MQSCRIPT"
+KYTARGETSUBDIRS = "TARGETSUBDIRS"
+KYMQCHECKLIST_VERSION = "MQCHECKLIST_VERSION"
+KYMOM_VERSION = "MOM_VERSION"
+KYTF_FAMILY='TF_FAMILY'
+KYOUTPUTDIR = "OUTPUTDIR"
+KYDPLYPKGGENLOC = "DPLYPKGGENLOC"
+KYMQCHKLISTDIR = "MQCHKLISTDIR"
+KYMQCHKLISTFILES = "MQCHKLISTFILES"
+KYTARGETDIRPATTERN = "TARGETDIRPATTERN"
+KYCCIVERSION_SOFTLINK = "CCIVERSION_SOFTLINK"
+KYTARGETHOSTNAMES="TARGETHOSTNAMES"
+KYTARGETAPPDIR = "TARGETAPPDIR"
+KYTARGETCONFIGDIR = "TARGETCONFIGDIR"
+KYTARGETSCRIPTSDIR = "TARGETSCRIPTSDIR"
+KYTARGETBINDIR = "TARGETBINDIR"
+KYTARGETSODIR = "TARGETSODIR"
+KYTARGETJVALDIR = "TARGETJVALDIR"
+KYTARGETMAPSDIR = "TARGETMAPSDIR"
+KYTARGETCERTDIR = "TARGETCERTDIR"
+KYTARGETREGISTRYDIR="TARGETREGISTRYDIR"
+KYTARGETDEPLOYMENTDIR = "TARGETDEPLOYMENTDIR"
+KYTARGETBACKUPDIR="TARGETBACKUPDIR"
+KYTARGETBACKUPNOS="TARGETBACKUPNOS"
+KYMADKEYSTOREFILE = 'MADKEYSTOREFILE'
+KYMADCACERTFILE = 'MADCACERTFILE'
+KYGUIDKEYSTOREFILE = 'GUIDKEYSTOREFILE'
+KYGUIDCACERTFILE = 'GUIDCACERTFILE'
+KYPARAM_QENV = "PARAM_QENV"
+KYPARAM_BIN_PATH = 'PARAM_BIN_PATH'
+KYPARAM_CONFIG_PATH = 'PARAM_CONFIG_PATH'
+KYPARAM_MAP_PATH = 'PARAM_MAP_PATH'
+KYEOCTF_EOCTFUMOM_Api_MadService = 'EOCTF_EOCTFUMOM_Api_MadService'
+KYEOCTF_EOCTFUMOM_MessagingServices = 'EOCTF_EOCTFUMOM_MessagingServices'
+KYEOCTF_EOCTFUMOM_GUID = 'EOCTF_EOCTFUMOM_GUID'
+KYPARAM_JVAL_PATH = 'PARAM_JVAL_PATH'
+KYPROPERTIESFILE='PROPERTIESFILE'
+KYPKGDIR='PKGDIR'
+KYTARFILENAME='TARFILENAME'
+KYPKGDIR='PKGDIR'
+KYMQDIRS="KYMQDIRS"
+KYQMGR="QMGR"
+KYMOMCONTOL_SCRIPT="MOMCONTOL_SCRIPT"
+KYMOMSCRIPTSRC="MOMSCRIPTSRC"
+KYPACKAGE_LOCATION="PACKAGE_LOCATION"
+KYMQSCSCRIPTS="MQSCSCRIPTS"
+KYPROPERTYFILE="PROPERTYFILE"
+KYGUIDHOSTNAME="GUIDHOSTNAME"
+KYGUIDURL="GUIDURL"
+KYMADHOSTNAME="MADHOSTNAME"
+KYMADURL="MADURL"
+KYMADESASCRIPT="MADESASCRIPT"
+KYGUIDESASCRIPT="GUIDESASCRIPT"
+KYDEPLOYPROPERTIES="DEPLOYPROPERTIES"
+KYUSE_PREV_EOCTF_CERTS="USE_PREV_EOCTF_CERTS"
+KYACTION="ACTION"
+KYTARGETRELEASEDIR="TARGETRELEASEDIR"
+KYPIUH2HDIR="PIUH2HDIR"
+KYH2HUSER="H2HUSER"
+KYH2HGROUP="H2HGROUP"
+KYWTXLOC="WTXLOC"
+KYMQ_VERSION="MQ_VERSION"
+KYMOMRUNNING_COUNT="MOMRUNNING_COUNT"
+KYMOMCONFIG_COUNT="MOMCONFIG_COUNT"
+KYMOMORIGINATORS_COUNT="MOMORIGINATORS_COUNT"
+KYPIUH2H_VERSION="PIUH2H_VERSION"
+KYCHANNELRUNNING_COUNT="CHANNELRUNNING_COUNT"
+KYSENDERCHANNELS_COUNT="SENDERCHANNELS_COUNT"
+INCLUDEMQ="MQ"
+INCLUDEDEPLOYMENT="H2H"
+FULLDEPLOYMENT="FULL"
+KYMQPROPERTYCHECK="MQPROPERTYCHECK"
+KYMAPSPROPERTYCHECK="MAPSPROPERTYCHECK"
+KYSOPROPERTYCHECK="SOPROPERTYCHECK"
+KYCONFIGPROPERTYCHECK="CONFIGPROPERTYCHECK"
+KYEOCTFPROPERTYCHECK="EOCTFPROPERTYCHECK"
+KYCERTSPROPERTYCHECK="CERTSPROPERTYCHECK"
+KYTARGETH2HLOGDIR='TARGETH2HLOGDIR'
+KYJVALPROPFILECHECK="JVALPROPFILECHECK"
+KYSCYEXIT='SCYEXIT'
+KYSCYDATA='SCYDATA'
+KYMOMINSTALLSCRIPT='MOMINSTALLSCRIPT'
+KYMOMTARFILE='MOMTARFILE'
+MOMFWKDIR='momfwk'
+KYMOMTARFILENAME='MOMTARFILENAME'
+KYCURRSCYEXITS = 'CURRSCYEXITS'
+KYCHSTATUS = 'CHSTATUS'
+
+POSTDEPLOYMENTBACKUPFILE = "pd.tar"
+MINBACKUPS=3
+CERTFILESPERMISSIONS='chmod u-x '
+CERTFOLDERPERMISSIONS='chmod -R og-rwx '
+EXECPERMISSION='chmod ug+x '
+XPERMS='chmod ugo+xw '
+TMPLOGDIR="/tmp/piuh2h/log"
+RELEASEFILE="Release.txt"
+VERSIONFILE="piuh2h.version.txt"
+TARGETRELEASEDIR="release"
+FILEREADBYTES=16*1024
+JVAL_FILE='jval.tar'
+JVAL_PROP_FILE='jval.prop'
+EOCTFFILE='EocTF.xml'
+EBMOMCONFIGFILE='EbMomConfig.xml'
+H2HTMPFILE='H2HTMPFILE.tmp'
+DEPLOYH2HFILE='h2hdeploy.ksh'
+DEPLOYPROPERTYFILE='h2hdeploy.properties'
+PACKAGEPROPERTYFILE='h2hpackage.properties'
+LOG4JPROPERTIESFILE='log4j.properties'
+VALIDATIONPROPERTIESFILE='validation.properties'
+PIUH2HPROPERTIESFILE='piuh2h.properties'
+DEPLOYFOLDER='deploy'
+SCRIPTFOLDER='scripts'
+LIBFOLDER='lib'
+PROPERTIESFOLDERNAME='properties'
+PROCESSEDFOLDERNAME='processed'
+JYTHON_JAR='jython.jar'
+LOG4J_JAR='log4j-1.2.15.jar'
+LOGDIRNAME='log'
+DEPLOYPACKAGENAME='piuh2h'
+TARGETBACKUPDIR='backup'
+PIUH2H_VERSION='1.0'
+TARGZEXT='.tar.gz'
+TAREXT='.tar'
+SRCHCMD='grep -R '+ MOMCONTOL_SCRIPT
+LISTMOMPS='ps -ef|grep Eb|grep -v grep'
+MOMCOUNT='ps -ef|grep Eb|grep -v grep|wc'
+CLUSTERLOC='/usr/local/cluster'
+PINPROMPT="Enter MAD and GUID P12 Cert PIN:"
+ENVIDVAR='<environment>'
+APPLICATIONVAR='<application>'
+CCIAPPLICATION='CCI'
+TFFAMILYVAR='<TF_family>'
+EBMOM_USER='fa_${APP_ENV}_${APP_NAME}'
+SETENVVAR='scripts/' + SETENVFILE
+SETENVVALUE='scripts/tf/' + SETENVFILE
+TFDIR='/opt/tf/'
+APPSETENVFILE='/scripts/app/' + SETENVFILE
+VARLOG='/var/log'
+LNCMD='ln -s '
+UNTARCMD="tar xf "
+GUNZIPCMD="gunzip -c "
+TARCMD="tar cf "
+GZIPCMD="gzip -f "
+INFO="INFO"
+DEBUG="DEBUG"
+SU="su "
+CHANNELSTATUSTAG="STATUS("
+DATADIR='data'
+DFKCMD = 'df -k |grep '
+LSFSCMD = 'lsfs |grep '
+JVALMSGDIRPROP="message.definition.directory"
+JVALBICDEFPROP="bic.definition.file"
+JVALCURRDEFPROP="countrycurrencycodes.definition.file"
+
+SETENVAPACHELINES=[
+		  'export APACHE_VERSION=<apache_version>',
+		  'export APACHE_USER=fa_${APP_ENV}_${APP_NAME}',
+		  'export APACHE_GROUP=fg_${APP_ENV}',
+		  '#export APACHE_DEBUG=Y',
+		  '. /opt/apache/$APACHE_VERSION/scripts/tf/setenv.sh',
+		  'export EBMOM_USER=fa_${APP_ENV}_${APP_NAME}'
+			]
+
+# packaging check property groups, add as many properties you like
+BASICPROPERTIES=[
+		'ENVID',
+		'CCI_VERSION',
+		'PROJECT',
+		'SUBPROJECT',
+		'DPLYPKGGENLOC',
+		]
+
+MQPROPERTIES=[
+		'PARAM_QUEUE_MANAGER',
+		'MQCHKLISTDIR',
+		'MQCHKLISTFILES'
+		]
+		
+MAPSPROPERTIES=[
+		'BUILDLOC',
+		'BUILDS',
+		'MAPSDIRS',
+		'H2HUSER',
+		'H2HGROUP'
+		]
+		
+SOPROPERTIES=[
+		'BUILDLOC',
+		'BUILDS',
+		'SODIRS',
+		'H2HUSER',
+		'H2HGROUP'
+		]
+		
+CERTSPROPERTIES=[
+		'USE_PREV_EOCTF_CERTS',
+		'MADKEYSTOREFILE',
+		'MADCACERTFILE',
+		'MADHOSTNAME',
+		'MADURL',
+		'GUIDKEYSTOREFILE',
+		'GUIDCACERTFILE',
+		'GUIDHOSTNAME',
+		'GUIDURL',
+		'MADESASCRIPT',
+		'GUIDESASCRIPT',
+		'WTXLOC',
+		'H2HUSER',
+		'H2HGROUP'
+		]
+
+CONFIGPROPERTIES=[
+		'BUILDLOC',
+		'BUILDS',
+		'CONFIGDIRS',
+		'H2HUSER',
+		'H2HGROUP'
+		]	
+		
+EOCTFPROPERTIES=[
+		'EOCTF_EOCTFUMOM_Api_MadService',
+		'EOCTF_EOCTFUMOM_MessagingServices',
+		'EOCTF_EOCTFUMOM_GUID',
+		'H2HUSER',
+		'H2HGROUP'
+		]
+
+								
+DEPLOYPROPERTIES=[
+			'ENVID',
+			'PROJECT',
+			'SUBPROJECT',
+			'CCI_VERSION',
+			'MOM_VERSION',
+			'TF_FAMILY',
+			'PARAM_QUEUE_MANAGER',
+			"TARGETHOSTNAMES",
+			'TARGETDIRPATTERN',
+			'TARGETCONFIGDIR',
+			'TARGETSCRIPTSDIR',
+			'TARGETBINDIR',
+			'TARGETSODIR',
+			'TARGETJVALDIR',
+			'TARGETMAPSDIR',
+			'TARGETCERTDIR',
+			'TARGETREGISTRYDIR',
+			'TARGETRELEASEDIR',
+			'TARGETBACKUPDIR',
+			'TRAGETBACKUPNOS',
+			'TARGETH2HLOGDIR',
+			'H2HUSER',
+			'H2HGROUP',
+			'WTXLOC',
+			'MADHOSTNAME',
+			'MADURL',
+			'GUIDHOSTNAME',
+			'GUIDURL',
+			'MADESASCRIPT',
+			'GUIDESASCRIPT',
+			'MQSCSCRIPTS',
+			'USE_PREV_EOCTF_CERTS',
+			'MQCHECKLIST_VERSION',
+			'CCIVERSION_SOFTLINK',
+			'PARAM_QENV',
+			'SCYDATA',
+			'SCYEXIT',
+			'MOMTARFILENAME'
+			]
+			
+PACKAGINGPROPERTIES=[
+			'DPLYPKGTAR',
+			'DPLYPKGGENLOC',
+			'IGNOREFOLDERS'
+			]
+		
+# @TODO
+RUNPACKAGE='package'
+RUNDEPLOYMENT='deploy'
+ACTIONVERIFY='verify'
+ACTIONPRECHECK='precheck'
+
+
+DEPLOYSCRIPTHDR="#!/bin/ksh\n\
+# deployH2H.ksh - perform H2H deployment\n\
+# \n\
+# Author : Mahesh Devendran, WebSphere Support, PIU Team\n\
+# \n\
+# copyright (c) 2009, Euroclear\n\
+#\n\
+java -Dpython.path=lib -jar lib/jython.jar scripts/H2HDeployEngine.py $*\n\
+"
+ESA_SCRIPT="esa.sh"
+
+#indexes of the different sheets in the MQ checklist workbook
+MQCHKLST_VARS = 1
+MQCHKLST_QLOCAL = 2
+MQCHKLST_QREMOTE = 3
+MQCHKLST_QALIAS = 4
+MQCHKLST_QTRANS = 5
+MQCHKLST_SDRCHAN = 6
+MQCHKLST_RCVRCHAN = 7
+MQCHKLST_IDXES = range(MQCHKLST_QLOCAL, MQCHKLST_RCVRCHAN+1)
+#Sheet labels:
+MQCHKLST_VARS = 'VARIABLES'
+MQCHKLST_QLOCAL = 'Queues Local'
+MQCHKLST_QREMOTE = 'Queues Remote'
+MQCHKLST_QALIAS = 'Queues Alias'
+MQCHKLST_QTRANS = 'Transmission Queue'
+MQCHKLST_SDRCHAN = 'Channel - Sender'
+MQCHKLST_RCVRCHAN = 'Channel - Receiver'
+MQCHKLST_SHEET_NAMES = [
+        MQCHKLST_QLOCAL,
+        MQCHKLST_QREMOTE,
+        MQCHKLST_QALIAS,
+        MQCHKLST_QTRANS,
+        MQCHKLST_SDRCHAN,
+        MQCHKLST_RCVRCHAN,
+        ]
+
+#the column where the MQ action is defined
+MQCHKLST_CMDIDX = 1
+#possible MQ actions
+MQCHKLST_CMDCREATE = 'create'
+MQCHKLST_CMDDELETE = 'delete'
+MQCHKLST_CMDUPDATE = 'changed'
+MQCHKLST_VARSKEYIDX = 2
+MQCHKLST_VARSVALIDX = 4
+
+MQCMD = {
+        (MQCHKLST_QLOCAL, MQCHKLST_CMDCREATE): [mq.DefineLocalQueue],
+        (MQCHKLST_QLOCAL, MQCHKLST_CMDDELETE): [mq.DeleteLocalQueue],
+        (MQCHKLST_QLOCAL, MQCHKLST_CMDUPDATE): [mq.DeleteLocalQueue,
+                                                mq.DefineLocalQueue],
+        (MQCHKLST_QREMOTE, MQCHKLST_CMDCREATE): [mq.DefineRemoteQueue],
+        (MQCHKLST_QREMOTE, MQCHKLST_CMDDELETE): [mq.DeleteRemoteQueue],
+        (MQCHKLST_QREMOTE, MQCHKLST_CMDUPDATE): [mq.DeleteRemoteQueue,
+                                                mq.DefineRemoteQueue],
+        (MQCHKLST_QALIAS, MQCHKLST_CMDCREATE): [mq.DefineQueueAlias],
+        (MQCHKLST_QALIAS, MQCHKLST_CMDDELETE): [mq.DeleteQueueAlias],
+        (MQCHKLST_QALIAS, MQCHKLST_CMDUPDATE): [mq.DeleteQueueAlias,
+                                                mq.DefineQueueAlias],
+        (MQCHKLST_QTRANS, MQCHKLST_CMDCREATE): [mq.DefineTransmissionQueue],
+        (MQCHKLST_QTRANS, MQCHKLST_CMDDELETE): [mq.DeleteTransmissionQueue],
+        (MQCHKLST_QTRANS, MQCHKLST_CMDUPDATE): [mq.DeleteTransmissionQueue,
+                                                mq.DefineTransmissionQueue],
+        (MQCHKLST_SDRCHAN, MQCHKLST_CMDCREATE): [mq.DefineSenderChannel],
+        (MQCHKLST_SDRCHAN, MQCHKLST_CMDDELETE): [mq.DeleteChannel],
+        (MQCHKLST_SDRCHAN, MQCHKLST_CMDUPDATE): [mq.DeleteChannel,
+                                                mq.DefineSenderChannel],
+        (MQCHKLST_RCVRCHAN, MQCHKLST_CMDCREATE): [mq.DefineReceiverChannel],
+        (MQCHKLST_RCVRCHAN, MQCHKLST_CMDDELETE): [mq.DeleteChannel],
+        (MQCHKLST_RCVRCHAN, MQCHKLST_CMDUPDATE): [mq.DeleteChannel,
+                                                mq.DefineReceiverChannel],
+        }
+
+MQCOMMENTS = {
+        MQCHKLST_QLOCAL: "               Queue Local Script",
+        MQCHKLST_QREMOTE: "               Queue Remote Script",
+        MQCHKLST_QALIAS: "               Queue Alias Script",
+        MQCHKLST_QTRANS: "               Transmission Queue Script",
+        MQCHKLST_SDRCHAN: "               Sender Channel Script",
+        MQCHKLST_RCVRCHAN: "               Receiver Channel Script",
+        }
+
+MQTEMPLATEVARS = {
+        #relationship between the variable names as defined in
+        #the templates and the column number of the associated
+        #data in the checklist (spreadsheet).
+        MQCHKLST_QLOCAL: {
+            8: 'stgclass', 3: 'qname', 11: 'descr', 6: 'maxdepth',
+            },
+        MQCHKLST_QREMOTE:   {
+            7: 'remote_qmanager', 8: 'transmission_qname',
+            6: 'remote_qname', 3: 'qname', 9: 'descr',
+            },
+        MQCHKLST_QALIAS:  {
+            3: 'qname', 7: 'descr', 6: 'qtarget',
+            },
+        MQCHKLST_QTRANS:  {
+            8: 'stgclass', 9: 'initq', 3: 'qname', 10: 'descr',
+            6: 'maxdepth',
+            },
+        MQCHKLST_SDRCHAN:  {
+            7: 'senderyes', 8: 'descr', 3: 'qname',
+            5: 'portname', 6: 'transmission_qname',
+            11: 'msgexit',
+            },
+        MQCHKLST_RCVRCHAN:  {
+            6: 'mcauser', 4: 'qname', 7: 'descr',
+            },
+                }
+
+
+XL_CELL_EMPTY = 0   #empty string u'' 
+XL_CELL_TEXT = 1    #a Unicode string 
+XL_CELL_NUMBER = 2  #float 
+XL_CELL_DATE = 3    #float 
+XL_CELL_BOOLEAN = 4 #int; 1 means TRUE, 0 means FALSE 
+XL_CELL_ERROR = 5   #int representing internal Excel codes; for a text representation, refer to the supplied dictionary error_text_from_code 
+XL_CELL_BLANK = 6   #empty string u''. Note: this type will appear only when open_workbook(..., formatting_info=True) is used. 
+

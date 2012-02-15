@@ -1,0 +1,86 @@
+
+from itsalib.template import StaticITSATemplate
+
+class DefineLocalQueue(StaticITSATemplate):
+    """
+    DEFINE QLOCAL({{qname}}) +
+        DEFPSIST(YES) +
+        DESCR('{{descr}}') +
+        MAXDEPTH({{maxdepth}}) REPLACE
+    """
+
+class DefineRemoteQueue(StaticITSATemplate):
+    """
+    DEFINE QREMOTE({{qname}}) +
+        DEFPSIST(YES) +
+        DESCR('{{descr}}') +
+        RNAME('{{remote_qname}}') +
+        RQMNAME('{{remote_qmanager}}') +
+        XMITQ({{transmission_qname}}) REPLACE
+    """
+
+class DefineQueueAlias(StaticITSATemplate):
+    """
+    DEFINE QALIAS({{qname}}) +
+        DEFPSIST(YES) +
+        DESCR('{{descr}}') +
+        TARGQ('{{qtarget}}') REPLACE
+    """
+
+class DefineQueueAlias(StaticITSATemplate):
+    """
+    DEFINE QALIAS({{qname}}) +
+        DEFPSIST(YES) +
+        DESCR('{{descr}}') +
+        TARGQ('{{qtarget}}') REPLACE
+    """
+
+class DefineTransmissionQueue(StaticITSATemplate):
+    """
+    DEFINE QLOCAL({{qname}}) +
+        DEFPSIST(YES) +
+        DESCR('{{descr}}') +
+        INITQ('{{initq}}') +
+        MAXDEPTH({{maxdepth}}) +
+        USAGE(XMITQ) REPLACE
+    """
+class DefineSenderChannel(StaticITSATemplate):
+    """
+    DEFINE CHANNEL({{qname}}) +
+        CHLTYPE(SDR) +
+        CONNAME('{{portname}}') +
+        XMITQ('{{transmission_qname}}') +
+        CONVERT({{senderyes+py:'Yes' if senderyes.strip().lower() == 'sender' else 'No'}}) +
+        DESCR('{{descr}}') REPLACE
+    """
+
+class DefineReceiverChannel(StaticITSATemplate):
+    """
+    DEFINE CHANNEL({{qname}}) +
+        CHLTYPE(RCVR) +
+        MCAUSER('{{mcauser}}') +
+        DESCR('{{descr}}') REPLACE
+    """
+
+class DeleteLocalQueue(StaticITSATemplate):
+    """
+    DELETE QLOCAL({{qname}})
+    """
+
+DeleteTransmissionQueue = DeleteLocalQueue
+
+class DeleteRemoteQueue(StaticITSATemplate):
+    """
+    DELETE QREMOTE({{qname}})
+    """
+
+class DeleteQueueAlias(StaticITSATemplate):
+    """
+    DELETE QALIAS({{qname}})
+    """
+
+class DeleteChannel(StaticITSATemplate):
+    """
+    DELETE CHANNEL({{qname}})
+    """
+

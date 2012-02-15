@@ -1,0 +1,62 @@
+1.0.0.1 1/12/2009  JRE support for performing deployment on systems without JRE installation.  	M Devendran
+1.0.0.2 1/12/2009  Release and version details                                                 	M Devendran
+1.0.0.3 1/12/2009  MAXDEPTH to MQSC                                                            	M Devendran
+1.0.0.4 1/12/2009  EsaTOCCrypto script into properties file                                    	M Devendran
+1.0.0.5 3/12/2009  Use existing certs and related config details                               	M Devendran
+1.0.1.0 1/12/2009  MQSC deployment with channels starting, 
+                   MQSC scripts release, 
+                   Existing CCI release versions backup,
+                   Target directory permissions                                                	M Devendran
+1.0.2.0 1/01/2010	1 packaging checks, prechecks and post checks
+                  2 Bug fixes
+                  3 setenv.sh 
+                  4 EsaCrypto support                                                          	M Devendran
+        
+1.0.2.1 20/01/2010 1 Added processed folder for properties processed.
+                  2 Project is now command line argument to support eses, wtx, etc. 
+                  3 The properties file format has changed to <envid>_<project>_h2hpackage.properties
+                  4 One log per environment per deployment 
+                  5 Deployment properties file is now part of the deployment package.
+                  6 Package name has now changed to <envid>-<project>-<checklistversion1>-<checklistversion2>.tar.gz
+                  7 Houskeeping for logfiles older than <n> days
+                  8 Moved validations to properties/Validation.properties
+                  9 Added data as default checklist dir - If MQCHKLISTDIR is not set in the property file.
+                 10 Support for <n> placeholders in EocTF.xml                                  	M Devendran
+                 11 data folder for checklists                                                 	M Devendran
+                 12 checklists must be applied in order                                        	M Devendran
+
+1.0.2.2 26/01/2010 1 Changed timestamp on files to the format (YYYY-MM-DD_HH-MM-SS)
+                  2 EocTF placeholders are generated from the EocTF.xml
+                  3 Added Space and FS checks
+                  4 MOM and SetEnv.sh scripts moved to properties file
+                  5 MQCheckList generation now fails if the variables sheet is missing in the .xls
+                  6 Certificate retrieval bug issue fixed                                      
+                  7 Updated log messages to be more meaningful for the issue of context        	M Devendran
+                  
+1.0.2.3 27/01/2010 1 Updated validation.properties for dependencies
+                  2 Added more exception handling                                              	M Devendran
+
+1.0.2.4 27/01/2010 1 Bugs fix update                                                           	M Devendran
+1.0.2.5 17/02/2010 1 Added conditional validations
+                  2 Added property replacement variables in properties file
+                  3. Fixed issues                                                                        
+                  4. Dependency on checklist removed for config update
+                  5. Fixed minor issues                                                         M Devendran
+1.0.2.6 23/02/2010 1. Fixes on testing against latest version of MOM.            		M Devendran
+1.0.2.7 26/02/2010 1. Update to run as functional ID: fa_ccih2h.                    		M Devendran
+
+1.0.3.0 16/03/2010 1. Added Security exits
+                   2. Added Mom Installation, wont function until pbrun is in place      
+                   3. Removed permission restriction for certs due to mom drivers failing
+                   4. Added packaging options
+                   5. Added further checks for properties, packaging and deployment             M Devendran
+                   
+1.0.3.1 23/03/2010 1. Added checks for security exits
+                   2. Backup after deployment                                                   M Devendran
+                   
+1.0.3.2 27/05/2010 1. Updated CONSTANTS.py for setenv.sh location				S. Odubade
+4.0.3.1 11/01/2011 1. Upgraded to 4.0.3								S. Waymouth
+4.1.3 31/03/2011 1. Upgraded to 4.1.3								S. Waymouth
+4.1.4 03/10/2011 1. PARAM_QENV value is ENVID by default.  MQChecklist will overide is different.S. Waymouth
+                   
+ 

@@ -1,0 +1,199 @@
+######################################################################################
+#MP16_H2HDeploy.properties - mp16 does not exist. This is 4 validating SOP
+# H2H/WTX deployment properties for mp16 environment
+#
+# Mahesh Devendran, WebSphere Support, PID Team
+#	Copyright(c) 2009, Euroclear 
+#
+# THIS PROPERTY FILE IS A COMPLETE DEPLOYMENT EXAMPLE - TO BE USED AS A TEMPLATE
+#
+#	NOTE: DONT USE THE VALUES IN THIS TEMPLATE, CHANGE AS PER PIDCR
+#######################################################################################
+
+#----------------------------------------------
+# Properties Section 1: Environment details
+#----------------------------------------------
+ENVID=mp16
+PROJECT=SP
+SUBPROJECT=H2H
+CCI_VERSION=5.1
+
+# Properties Section 2: Build details
+BUILDLOC=G:\Unix Support\Release\CCIVersion5.1\H2H\SP
+BUILDS=Build12\3.5.2.0,Build15
+MOMSCRIPTSRC=C:\H2H_test\scripts\testenv\r_app_rg1.sh
+JVALFOLDER=jval
+MOM_VERSION=3.5.2.0
+TF_FAMILY=F.A201.A01.3.5.2.0
+WTXLOC=/opt/wtxcs83
+IGNOREFOLDERS=common,PCommon,PCcommon
+
+#----------------------------------------------
+# Properties Section 2.1: Source directory mapping
+#----------------------------------------------
+SODIRS=PCsource,source
+MAPSDIRS=WTXMaps
+CONFIGDIRS=Config
+
+# MOM FWK Section
+MOMINSTALLSCRIPT=\\beprod01.eoc.net\OffShare\PI\Public\Technical\tf\unix\install.bsh
+MOMTARFILE=\\beprod01.eoc.net\OffShare\PI\Public\Technical\tf\unix\TF_F.A201.A01.3.5.2.0.tar
+MOMORIGINATORS=all
+
+#----------------------------------------------
+# Properties Section 3: MQ checklist
+#----------------------------------------------
+PARAM_QUEUE_MANAGER=AXPCNV01CLUA
+
+#PARAM_QENV must be in uppercase. Retain even if there is no MQ checklist; used in EocTF.xml
+PARAM_QENV=MP16
+MQCHKLISTDIR=C:\H2H_test\data
+MQCHKLISTFILES="MP16_CCI - version 4.3 - TFE for SP - MQ checklist v00.01.xls"
+	
+
+#----------------------------------------------
+# Properties Section 4: EocTF requirements
+#----------------------------------------------
+# EocTF replacements
+# USE_PREV_EOCTF_CERTS = N
+#USE_PREV_EOCTF_CERTS=N
+
+# NOTE: #MADKEYSTOREFILE# and #MADCACERTFILE# will be replaced with the directory on the target machine but with the same filename as on source
+MADKEYSTOREFILE=G:\PID\CCI\certificates\WTX\TEST\STPConverter-TestMF-sslcli.p12
+MADCACERTFILE=G:\PID\CCI\certificates\Mainfame_CA\Test_and_Dev\CCI-MF-Access-Control-CA.cer
+MADHOSTNAME=cd37mfr.beprod01.eoc.net:44006
+MADURL=/MAD/
+GUIDKEYSTOREFILE=G:\PID\CCI\certificates\WTX\TEST\STPConverter-TestMF-sslcli.p12 # p12 cert file on the source machine
+GUIDCACERTFILE=G:\PID\CCI\certificates\Mainfame_CA\Test_and_Dev\CCI-MF-Access-Control-CA.cer #' ca cert file for GUID on the source machine
+GUIDHOSTNAME=cd37mfr.beprod01.eoc.net:44007
+GUIDURL=/GUID/
+
+# NOTE: For security reasons, enter <PIN> in place of the pin number. The deployment script will prompt for the pin number during the deployment process.
+MADESASCRIPT="EsaTOCCrypto -c $O_ENVID HttpTransportChannel cd37mfr.beprod01.eoc.net:44006 /MAD/ <PIN>"
+GUIDESASCRIPT="EsaTOCCrypto -c $O_ENVID HttpTransportChannel cd37mfr.beprod01.eoc.net:44007 /GUID/ <PIN>"
+
+# !!!PLACEHOLDERS IN THE BELOW ELEMENTS WILL BE TAKEN CARE AUTOMATICALLY BUT CAN ALSO BE REPLACED MANUALLY!!!
+# e.g MADURL is replaced by the value below
+EOCTF_EOCTFUMOM_Api_MadService=[[
+          <MadService>
+                <CharSet type="String">500</CharSet>
+          </MadService>
+          ]]
+
+
+EOCTF_EOCTFUMOM_MessagingServices=[[
+		<MessagingServices>
+		            <EndPoints>
+		                <ClientEndPoint name="MAD&amp;TA">
+		                    <ChannelStack type="String">MTC,HttpBinding</ChannelStack>
+		                    <Channel name="MTC">
+		                        <Type type="String">EbMomMtcProtocolChannel</Type>
+		                        <CharSet type="String">500</CharSet>
+		                        <MTC_MES_TYP_ID type="String">MTC</MTC_MES_TYP_ID>
+		                        <MTC_MES_TYP_VRS_ID type="String">I002</MTC_MES_TYP_VRS_ID>
+		                        <MTC_DBG_CD type="String">N</MTC_DBG_CD>
+		                    </Channel>
+		                    <Channel name="HttpBinding">
+		                        <Type type="String">EbHttpTransportChannel</Type>
+		                        <Host type="String">#MADHOSTNAME#</Host>
+		                        <Url type="String">#MADURL#</Url>
+		                        <KeyStorePath type="String">#MADKEYSTOREFILE#</KeyStorePath>
+		                        <CACertificatePath type="String">#MADCACERTFILE#</CACertificatePath>
+		                        <CipherSuite type="String">NULL-SHA</CipherSuite>
+		                        <MaintainUrl type="String">0</MaintainUrl>
+		                        <RecyclingTime type="String">10</RecyclingTime>
+		                        <Timeout type="String">30</Timeout>
+		                        <MaxKeepAlive type="String">100</MaxKeepAlive>
+		                    </Channel>
+		                </ClientEndPoint>
+		            </EndPoints>
+		</MessagingServices>
+		]]
+		
+EOCTF_EOCTFUMOM_GUID=[[
+		<EOCTFUID>
+        <Originator type="String">GUID</Originator>
+        <Action type="String">GUUIInfo</Action>
+        <RangeProviderType type="String">CTGProvider</RangeProviderType>
+        <CallApi type="String">libEbMomAPI.so</CallApi>
+    </EOCTFUID>
+		<Service Originator="GUID">
+        <CallDefs>
+            <CallDef Action="GUUIInfo">
+                <ConnectionName type="String">GUIDCICS</ConnectionName>
+                <CharSet type="String">500</CharSet>
+                <RequestHeaderFormat type="String">requestFormat</RequestHeaderFormat>
+                <ReplyHeaderFormat type="String">replyFormat</ReplyHeaderFormat>
+            </CallDef>
+        </CallDefs>
+        <HeaderFormatDefs>
+            <HeaderFormatDef name="requestFormat">
+                <HeaderFormat type="String">Mom CCI SAP</HeaderFormat>
+                <MES_TYP_VRS_ID type="String">I001</MES_TYP_VRS_ID>
+                <MES_CLS_ID type="String">GUID_RANGE_REQUEST</MES_CLS_ID>
+                <MES_CLS_VRS_ID type="String">I001</MES_CLS_VRS_ID>
+            </HeaderFormatDef>
+            <HeaderFormatDef name="replyFormat">
+                <HeaderFormat type="String">Mom CCI SAP</HeaderFormat>
+                <MES_CLS_ID type="String">GUID_RANGE</MES_CLS_ID>
+            </HeaderFormatDef>
+        </HeaderFormatDefs>
+    </Service>
+    <MessagingServices>
+        <EndPoints>
+            <ClientEndPoint name="GUIDCICS">
+                <ChannelStack type="String">MTC,HttpBinding</ChannelStack>
+                <Channel name="MTC">
+                    <Type type="String">EbMomMtcProtocolChannel</Type>
+                    <CharSet type="String">500</CharSet>
+                    <MTC_MES_TYP_ID type="String">MTC</MTC_MES_TYP_ID>
+                    <MTC_MES_TYP_VRS_ID type="String">I002</MTC_MES_TYP_VRS_ID>
+                    <MTC_DBG_CD type="String">N</MTC_DBG_CD>
+                </Channel>
+                <Channel name="HttpBinding">
+                    <Type type="String">EbHttpTransportChannel</Type>
+                    <Url type="String">#GUIDURL#</Url>
+                    <Host type="String">#GUIDHOSTNAME#</Host>
+                    <KeyStorePath type="String">#GUIDKEYSTOREFILE#</KeyStorePath>
+                    <CACertificatePath type="String">#GUIDCACERTFILE#</CACertificatePath>
+                    <CipherSuite type="String">NULL-SHA</CipherSuite>
+                    <MaintainUrl type="String">0</MaintainUrl>
+                    <RecyclingTime type="String">10</RecyclingTime>
+                    <Timeout type="String">30</Timeout>
+                    <MaxKeepAlive type="String">100</MaxKeepAlive>
+                </Channel>
+            </ClientEndPoint>
+        </EndPoints>
+    </MessagingServices>
+    ]]
+
+#----------------------------------------------
+# Properties Section 5: Target host structure
+#----------------------------------------------
+# TARGET install requirements - The format of target directory will be as below
+TARGETHOSTNAMES=axtcci001
+# create your own target directory structure for e.g: /code/<ENVID>/CCI
+TARGETDIRPATTERN=/code/!!ENVID!!/CCI
+CCIVERSION_SOFTLINK=active
+# Target sub directories - this will be under /code/<ENVID>/CCI/active where by default a CCIVERSION_SOFTLINK will be created
+TARGETCONFIGDIR=config
+TARGETSCRIPTSDIR=scripts
+TARGETBINDIR=bin
+TARGETSODIR=so
+TARGETJVALDIR=jval
+TARGETMAPSDIR=maps
+TARGETCERTDIR=certs
+TARGETREGISTRYDIR=registry
+TARGETRELEASEDIR=release
+# you can change this to where ever you like to by seting a full pathname for the below, by default will be set as #TARGETDIRPATTERN#/backup
+TARGETBACKUPDIR=/code/!!ENVID!!/CCI/backup
+TARGETH2HLOGDIR=/var/log/!!ENVID!!/CCI/!!CCI_VERSION!!
+TARGETBACKUPNOS=3
+H2HUSER=fa_ccih2h
+H2HGROUP=fg_ccih2h
+
+#----------------------------------------------
+# Properties Section 6: Packaging options
+#----------------------------------------------
+#Directory where the output of the packaging on the source machine will be created
+DPLYPKGGENLOC=C:\H2H_test\packages\mp16
